@@ -1,4 +1,7 @@
 
+Themen
+------
+
 * MST
 	* Kruskal
 	* Jarnìk-Prim
@@ -12,4 +15,11 @@
 * All Pairs Shortest Path
 	* Floyd Warshall's DP
 
+
+Termine
+-------
+
+* Outline bis 14. Mai
+* Folien bis 21. Mai
+* Vortrag am 28. Mai
 
