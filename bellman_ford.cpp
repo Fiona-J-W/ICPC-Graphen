@@ -33,7 +33,6 @@ std::vector<dist> bellman_ford(const graph& g, const edge_weights& edges, node s
 	for (auto i = std::size_t{}; i < g.size() + 1; ++i) {
 		for (auto v = std::size_t{}; v < g.size(); ++v) {
 			for (auto neighbour: g[v]) {
-				//std::cout << v << " -> " << neighbour << std::endl;
 				const auto old_dist = min_dists[neighbour];
 				const auto new_dist =
 					min_dists[v] + edges.at({v, neighbour});
