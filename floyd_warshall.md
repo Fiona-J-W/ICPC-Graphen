@@ -5,14 +5,15 @@ APSP
 Einleitung
 ----------
 
-* Problem: SSSP - Algorithmen werden zu langsam, wenn man sie für alle Paare |V| - mal ausführen muss 
--> ungefähr O(|V|^4)?
+* Problem: SSSP - Algorithmen sind langsam, wenn man sie für alle Paare |V| - mal ausführen muss 
+-> ungefähr O(|V|^3)
+-> geht es in max gleicher laufzeit leichter?
 
 <!-- Beispielgraph für unten -->
 
-* Lösung: reine Rechenleistung? Ja, aber geschickt!
+* Lösung: Ja, mit DP!
 
-=> dynamic programming
+(dynamic programming)
 
 * Idee: Man überführt den Graphen in eine Adjazenzmatrix und iteriert geschickt über diese, 
 um statt der ursprünglichen Verbindung den kürzesten Pfand von i nach j zu haben.
