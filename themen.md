@@ -3,17 +3,13 @@ Themen
 ------
 
 * MST
-	* Kruskal
-	* Jarnìk-Prim
+	* [Kruskal](kruskal.md)
 * Single Source Shortest Path
-	* bei ungewichteten
-		* Breitensuche
-	* bei gewichteten
-		* Dijkstra
-	* mit negativen Zyklen
-		* Bellman-Ford
+	* zwei Sätze zu Breitensuche
+	* [Dijkstra](dijkstra.md) (und zwei Sätze zu Jarnìk-Prim)
+	* [Bellman-Ford](bellman_ford.md)
 * All Pairs Shortest Path
-	* Floyd Warshall's DP
+	* [Floyd Warshall](floyd_warshall.md)
 
 
 Termine
