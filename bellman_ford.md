@@ -29,7 +29,7 @@ Erklärung
 
 *mündliche Erklärung anhand von Graphiken*
 
-*Zeigen des Quellcodes*
+*Zeigen des Quellcodes (anderes Dokument im Repository)*
 
 Weitere Eigenschaften
 ---------------------
