@@ -33,7 +33,7 @@ Es ist grundsätzlich wie die Breitensuche, aber
 
 #Laufzeit
 
-![LZ](http://i.imgur.com/izsnM96.gif)
+![LZ](http://i.imgur.com/izsnM96.gif) bei einer als BT implementierten PriorityQueue
 
 #Durcharbeiten am Beispiel
 
