@@ -1,13 +1,16 @@
 
-APSP
+APSP 
 ====
+(All pairs shortest paths)
 
 Einleitung
 ----------
 
-* Problem: SSSP - Algorithmen sind langsam, wenn man sie für alle Paare |V| - mal ausführen muss 
--> ungefähr O(|V|^3)
--> geht es in max gleicher laufzeit leichter?
+* Problem: Finde so schnell es geht alle kürzesten Verbindungen zwischen allen Knoten
+* 1. Lösung: SSSP - Algorithmen sind langsam, weil man sie für alle Paare |V| - mal ausführen muss 
+-> |V| * O ((|E| + |V|) * log(|V|)) = |V| * O ((|V|^2 + |V|) * log(|V|))
+    = |V| * O ((|V|^2) * log(|V|)) = O ((|V|^3) * log(|V|))
+-> geht es schneller?
 
 <!-- Beispielgraph für unten -->
 
@@ -37,26 +40,32 @@ for (int k = 0; k < V; k++)
 			AdjMat[i][j] = min(AdjMat[i][j], AdjMat[i][k] + AdjMat[k][j]);
 ```
 
+Aufwand: O(|V|^3)
+
 Weitere Anwendungen
 ---------------------
 
 * Auch für SSSP - Probleme anwendbar (wenn |V| < 400)
 * Detektion von negativen oder günstigsten Zyklen möglich
--> 
+-> mit setzen auf hohen Wert auf der Diagonalen
 * Finden des Durchmessers eines Graphen (der längste der kürzesten Pfade)
-* weiteres?
+* Minimax, Maximin
+* Transitive Hülle berechnen (wer ist mit wen verbunden -> bits)
+* Finden von starken Zusammenhangskomponenten
+* evtl. weitere Anwendungen in konkreten Fällen
 
 Beurteilung
 -----------
 
-* Assymptotische Komplexität $\in O(|V|^3)$ mit Speicher in O(|V|^2)
+* Asymptotische Komplexität $\in O(|V|^3)$ mit Speicher in O(|V|^2)
 * Für andere Probleme nur günstig anzuwenden, wenn |V|< 400
 * Sehr leicht zu implementieren (Vierzeiler)
 
 Fazit
 -----
 
-> Macht das wenn |V| < 400, sonst überlegt euch was anderes.
+> Gut für das ürsprüngliche Problem
+> Auch gut für andere Probleme, sofern |V| < 400, ansonsten andere Algorithmen.
 
 Zusammenfassung
 ---------------
