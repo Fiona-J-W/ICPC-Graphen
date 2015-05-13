@@ -24,7 +24,7 @@ Implementierung
 ---------------
 * sortiere Kanten nach Gewicht
 * benutze Union-Find um Zyklen zu verhindern
-* Laufzeit: O(E*log(E) + E*(~1))=O(E*log(E))=O(E*log(V^2))=O(E*log(V))
+* Laufzeit: O(E\*log(E) + E\*(~1))=O(E\*log(E))=O(E\*log(V^2))=O(E\*log(V))
 
 Quellcode
 ---------
