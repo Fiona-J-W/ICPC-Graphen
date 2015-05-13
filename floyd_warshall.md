@@ -10,7 +10,9 @@ Einleitung
 * 1. Lösung: SSSP - Algorithmen sind langsam, weil man sie für alle Paare |V| - mal ausführen muss 
 
 -> |V| * O ((|E| + |V|) * log(|V|)) = |V| * O ((|V|^2 + |V|) * log(|V|))
-    = |V| * O ((|V|^2) * log(|V|)) = O ((|V|^3) * log(|V|))
+    				    = |V| * O ((|V|^2) * log(|V|)) 
+    				    = O ((|V|^3) * log(|V|))
+    
 -> geht es schneller?
 
 <!-- Beispielgraph für unten -->
