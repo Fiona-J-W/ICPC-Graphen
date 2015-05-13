@@ -23,7 +23,7 @@ Erklärung
 
 <!-- mündliche Erklärung anhand von Graphiken -->
 
-Beispielgraph mit |V| ~= 6; durchexerzieren des Problems an diesem Beispiel.
+Beispielgraph mit |V| ~= 5; durchexerzieren des Problems an diesem Beispiel.
 
 <!-- Zeigen des Quellcodes -->
 
