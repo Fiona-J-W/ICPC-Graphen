@@ -4,6 +4,8 @@ Ein kurze Anmerkung dass es "Daikstra" ausgesprochen wird, und nicht anders.
 
 #Anwendung
 
+Problem: SSSP
+
 Breitensuche geht bei gewichten Graphen nicht. Beispielgraph, bei dem Breitensuche fehlschlägt (Von `X` nach `Y`)
 
 ```
@@ -16,7 +18,7 @@ Y___/
 ```
 
 
-#Implementierungsonsidee
+#Implementitationsidee
 
 Es ist grundsätzlich wie die Breitensuche, aber 
 
@@ -28,6 +30,10 @@ Es ist grundsätzlich wie die Breitensuche, aber
 #Vorstellung der Implementierung
 
 (commite ich heute abend)
+
+#Laufzeit
+
+![LZ](http://i.imgur.com/izsnM96.gif)
 
 #Durcharbeiten am Beispiel
 
