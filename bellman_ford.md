@@ -14,7 +14,7 @@ Einleitung
 * Wichtige Einschränkung: negative Kreise auf irgendeinem Pfad von `Q` zu `S` bedeuten
   Nichtexistenz eines kürzesten Pfades
 * Idee 1: vollständige Tiefensuche.
-	* selbst für Brute-Force-Verhältnisse zu langsam (exponentielle Laufzeit?) <!-- TODO -->
+	* selbst für Brute-Force-Verhältnisse zu langsam (exponentielle Laufzeit?) *TODO: ?*
 * Idee 2:
 	* kürzester Pfad enthält maximal $|V| - 1$ Kanten
 	* Enthalte der kürzeste Pfad $i$ Kanten. Falls wir alle kürzesten Pfade mit bis zu $i - 1$ Knoten kennen:
@@ -27,9 +27,9 @@ Einleitung
 Erklärung
 ---------
 
-<!-- mündliche Erklärung anhand von Graphiken -->
+*mündliche Erklärung anhand von Graphiken*
 
-<!-- Zeigen des Quellcodes -->
+*Zeigen des Quellcodes*
 
 Weitere Eigenschaften
 ---------------------
