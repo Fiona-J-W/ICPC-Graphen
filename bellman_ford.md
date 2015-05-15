@@ -49,8 +49,7 @@ Erklärung
 ![](bellman_ford_graphs/graph_8.svg)
 
 
-
-*Zeigen des Quellcodes*
+*Zeigen des Quellcodes (anderes Dokument im Repository)*
 
 Weitere Eigenschaften
 ---------------------
