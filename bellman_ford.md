@@ -29,6 +29,27 @@ Erklärung
 
 *mündliche Erklärung anhand von Graphiken*
 
+![](bellman_ford_graphs/graph_0.svg)
+
+* Runde 1
+
+![](bellman_ford_graphs/graph_1.svg)
+![](bellman_ford_graphs/graph_2.svg)
+![](bellman_ford_graphs/graph_3.svg)
+![](bellman_ford_graphs/graph_4.svg)
+
+* Runde 2
+
+![](bellman_ford_graphs/graph_5.svg)
+![](bellman_ford_graphs/graph_6.svg)
+![](bellman_ford_graphs/graph_7.svg)
+
+* Runde 3 (keine Änderungen → fertig)
+
+![](bellman_ford_graphs/graph_8.svg)
+
+
+
 *Zeigen des Quellcodes*
 
 Weitere Eigenschaften
