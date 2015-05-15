@@ -29,24 +29,24 @@ Erklärung
 
 *mündliche Erklärung anhand von Graphiken*
 
-![](bellman_ford_graphs/graph_0.dot.svg)
+![](bellman_ford_graphs/graph_0.dot.png)
 
 * Runde 1
 
-![](bellman_ford_graphs/graph_1.dot.svg)
-![](bellman_ford_graphs/graph_2.dot.svg)
-![](bellman_ford_graphs/graph_3.dot.svg)
-![](bellman_ford_graphs/graph_4.dot.svg)
+![](bellman_ford_graphs/graph_1.dot.png)
+![](bellman_ford_graphs/graph_2.dot.png)
+![](bellman_ford_graphs/graph_3.dot.png)
+![](bellman_ford_graphs/graph_4.dot.png)
 
 * Runde 2
 
-![](bellman_ford_graphs/graph_5.dot.svg)
-![](bellman_ford_graphs/graph_6.dot.svg)
-![](bellman_ford_graphs/graph_7.dot.svg)
+![](bellman_ford_graphs/graph_5.dot.png)
+![](bellman_ford_graphs/graph_6.dot.png)
+![](bellman_ford_graphs/graph_7.dot.png)
 
 * Runde 3 (keine Änderungen → fertig)
 
-![](bellman_ford_graphs/graph_8.dot.svg)
+![](bellman_ford_graphs/graph_8.dot.png)
 
 
 *Zeigen des Quellcodes (anderes Dokument im Repository)*
