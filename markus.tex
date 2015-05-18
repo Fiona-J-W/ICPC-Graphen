@@ -1,18 +1,24 @@
 %-----------------------------
-\section{MST und Kruskal}
-\subsection{MST}
+\section{Minimum Spanning Tree (MST)}
+
+\subsection{Problem}
+
 
 \begin{frame}
 \frametitle{Minimum Spanning Tree (MST)}
+\begin{block}{Problemstellung}
 \begin{itemize}
 \item "finde das billigste Netzwerk"
 \item genau: \\
 Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist ein zusammenhgängender Teilgraph mit geringstem Gesamtgewicht.
 \end{itemize}
+\end{block}
+
 \end{frame}
 
 \begin{frame}
-\frametitle{Lösung}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{block}{Lösung}
 \begin{itemize}
 \item Ansatz: baue einen Baum mit greedy Algorithmus:
 \begin{enumerate}
@@ -26,11 +32,73 @@ Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist 
 \item $ \implies $ Baum ist ein MST
 \end{enumerate}
 \end{itemize}
+\end{block}
+
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{kruskal_graphs/graph1.pdf}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph1.pdf}
 \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph2.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph3.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph4.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph5.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph6.pdf}
+\end{figure}
+\end{frame}
+
+\subsection{Lösung: Kruskal}
+
+\begin{frame}
+\frametitle{Kruskal}
+\begin{block}{Implementierung - Algorithmus von Kruskal}
+\begin{itemize}
+\item sortiere Kanten nach Gewicht
+\item benutze Union-Find um Zyklen zu detektieren
+\item Laufzeit:\\
+$O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kruskal}
+\begin{block}{Weitere lösbare Probleme}
+\begin{itemize}
+\item "MST" finden, wenn Kanten vorgegeben sind
+\item Minimum Spanning Forest: mehrere getrennte Bäume
+\item min-max Problem
+\end{itemize}
+\end{block}
 \end{frame}
