@@ -23,8 +23,25 @@ $|V| * O ((|E| + |V|) * log(|V|))$\\$
 = |V| * O ((|V|^2 + |V|) * log(|V|))$\\$
 = |V| * O ((|V|^2) * log(|V|)) $\\$
 = O ((|V|^3) * log(|V|))$\\
-$\Rightarrow$ geht es schneller?
+$\implies$ geht es schneller?
 \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{Code}
+
+\begin{lstlisting}
+for (int k = 0; k < V; k++)
+    for (int i = 0; i < V; i++)
+        for (int j = 0; j < V; j++)
+			AdjMat[i][j] = min(AdjMat[i][j],
+			    AdjMat[i][k] + AdjMat[k][j]);
+\end{lstlisting}
+
+~\\$\implies$ der Aufwand liegt in $O(|V|^3)$
+
 \end{frame}
 
 %------------------------------------------------
@@ -35,13 +52,28 @@ $\Rightarrow$ geht es schneller?
 \frametitle{Weitere Anwendungen}
 \begin{itemize}
 
-\item Auch für SSSP - Probleme anwendbar (wenn |V| < 400)
-\item Detektion von negativen oder günstigsten Zyklen möglich -> mit setzen auf hohen Wert auf der Diagonalen
+\item Auch für SSSP - Probleme anwendbar (wenn $\vert V \vert < 400$)
+\item Detektion von negativen oder günstigsten Zyklen möglich $\implies$ setze die Diagonale auf Unendlich (hohen Wert)
 \item Finden des Durchmessers eines Graphen (der längste der kürzesten Pfade)
 \item Minimax, Maximin
-\item Transitive Hülle berechnen (wer ist mit wen verbunden -> bits)
+\item Transitive Hülle berechnen (wer ist mit wen verbunden $\rightarrow$ bits)
 \item Finden von starken Zusammenhangskomponenten
 \item evtl. weitere Anwendungen in konkreten Fällen
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Beurteilung} 
+
+\begin{frame}
+\frametitle{Beurteilung}
+\begin{itemize}
+
+\item[+] Asymptotische Komplexität $\in O(|V|^3)$  und mit Speicher $\in O(|V|^2)$
+\item[+] Sehr leicht zu implementieren (Vierzeiler)
+\item[+] Für andere Probleme günstig anzuwenden, wenn $|V|< 400$
+\item[-- --] Für andere Probleme \textbf{nur} günstig anzuwenden, wenn $|V|< 400$
 \end{itemize}
 \end{frame}
 
