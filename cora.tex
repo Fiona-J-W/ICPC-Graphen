@@ -1,0 +1,48 @@
+%------------------------------------------------
+\section{APSP} 
+
+\subsection{Idee} 
+
+\begin{frame}
+\frametitle{APSP - All Pairs Shortest Paths}
+\begin{block}{Problemstellung}
+Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten Pfad zwischen allen Knoten i zu allen Knoten j herausfinden, wobei i, j aus V sind.
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{APSP - Erster Ansatz}
+\begin{block}{Lösungsansatz}
+Man verwendet den bereits bekannten SSSP-Algorithmus ** , und führ diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
+\end{block}
+
+\begin{block}{Laufzeit}
+$|V| * O ((|E| + |V|) * log(|V|))$\\$
+= |V| * O ((|V|^2 + |V|) * log(|V|))$\\$
+= |V| * O ((|V|^2) * log(|V|)) $\\$
+= O ((|V|^3) * log(|V|))$\\
+$\Rightarrow$ geht es schneller?
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Weitere Anwendungen} 
+
+\begin{frame}
+\frametitle{Weitere Anwendungen}
+\begin{itemize}
+
+\item Auch für SSSP - Probleme anwendbar (wenn |V| < 400)
+\item Detektion von negativen oder günstigsten Zyklen möglich -> mit setzen auf hohen Wert auf der Diagonalen
+\item Finden des Durchmessers eines Graphen (der längste der kürzesten Pfade)
+\item Minimax, Maximin
+\item Transitive Hülle berechnen (wer ist mit wen verbunden -> bits)
+\item Finden von starken Zusammenhangskomponenten
+\item evtl. weitere Anwendungen in konkreten Fällen
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
