@@ -25,19 +25,22 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
-\usepackage{color}
+\usepackage{xcolor}
+
 \usepackage{listings} % Source code listingse
 
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
- 
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+
  
 \lstset{language=C++,
                 basicstyle=\small,
                 keywordstyle=\color{blue}\ttfamily,
                 stringstyle=\color{red}\ttfamily,
-                commentstyle=\color{green}\ttfamily,
+                commentstyle=\color{darkgreen}\ttfamily,
                 morecomment=[l][\color{magenta}]{\#},
                 breaklines=true
                 breakwhitespaces=true
@@ -60,7 +63,7 @@
 \author{Markus Schneckenburger, Moritz Uehling, Florian Weber, Cora Weidner } % Your name
 \institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-KIT\\ICPC-Teilnehmervortrag
+	KIT\\ICPC-Teilnehmervortrag
 }
 \date{28.05.15} % Date, can be changed to a custom date
 
