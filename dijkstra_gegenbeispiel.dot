@@ -1,0 +1,8 @@
+strict digraph {
+	0 -> 1 [label=3,color=red]
+	0 -> 2 [label=5, color=green]
+	2 -> 1 [label=-3, color=green]
+	0 [label=Q]
+	1 [label=S]
+	2 [label=H]
+}

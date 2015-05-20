@@ -23,22 +23,20 @@ const auto inf_dist = std::numeric_limits<dist>::infinity();
 std::vector<dist> bellman_ford(std::size_t node_count, const std::vector<edge>& edges, node source) {
 	auto min_dists = std::vector<dist>(node_count, inf_dist);
 	min_dists[source] = 0;
-	auto changes_happened = false;
 	for (auto i = std::size_t{}; i < node_count + 1; ++i) {
+		auto changes = false;
 		for(const auto& e: edges) {
 			const auto old_dist = min_dists[e.to];
 			const auto new_dist = min_dists[e.from] + e.weight;
 			if (new_dist < old_dist) {
 				min_dists[e.to] = new_dist;
-				changes_happened = true;
+				changes = true;
 			}
 		}
-		if (!changes_happened) {
-			break;
-		} else if(i == node_count) {
+		if (!changes) { break; }
+		if (i == node_count) {
 			throw std::runtime_error{"negative cycle"};
 		}
-		changes_happened = false;
 	}
 	return min_dists;
 }

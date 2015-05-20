@@ -2,12 +2,16 @@
 SSSP
 ====
 
-Einleitung
-----------
+Übersicht
+---------
 
 * Problem: Dijkstra kommt nicht mit negativen Kanten zurecht
 
 <!-- Beispielgraph -->
+![](dijkstra_gegenbeispiel.pdf)
+
+Ansätze
+-------
 
 * Lösung: rohe ~~Gewalt~~ Rechenleistung
 
@@ -24,32 +28,129 @@ Einleitung
 
 * Idee 2 ist offensichtlich vielversprechender, sie führt zum Algorithmus von Belllman und Ford.
 
-Erklärung
----------
+Initialisierung
+---------------
 
-*mündliche Erklärung anhand von Graphiken*
+![](bellman_ford_graphs/graph_0.png)
 
-![](bellman_ford_graphs/graph_0.dot.png)
+Runde 1
+-------
 
-* Runde 1
+![](bellman_ford_graphs/graph_1.png)
 
-![](bellman_ford_graphs/graph_1.dot.png)
-![](bellman_ford_graphs/graph_2.dot.png)
-![](bellman_ford_graphs/graph_3.dot.png)
-![](bellman_ford_graphs/graph_4.dot.png)
+Runde 1
+-------
 
-* Runde 2
+![](bellman_ford_graphs/graph_2.png)
 
-![](bellman_ford_graphs/graph_5.dot.png)
-![](bellman_ford_graphs/graph_6.dot.png)
-![](bellman_ford_graphs/graph_7.dot.png)
+Runde 1
+-------
 
-* Runde 3 (keine Änderungen → fertig)
+![](bellman_ford_graphs/graph_3.png)
 
-![](bellman_ford_graphs/graph_8.dot.png)
+Runde 1 - Ende
+--------------
+
+![](bellman_ford_graphs/graph_4.png)
+
+Runde 2
+-------
+
+![](bellman_ford_graphs/graph_5.png)
+
+Runde 2
+-------
+
+![](bellman_ford_graphs/graph_6.png)
+
+Runde 2 - Ende
+--------------
+
+![](bellman_ford_graphs/graph_7.png)
+
+Runde 3 (keine Änderungen → fertig)
+-----------------------------------
+
+![](bellman_ford_graphs/graph_8.png)
+
+Code
+----
+
+###Definitionen
+
+```cpp
+using node = std::size_t;
+using dist = double;
+
+struct edge {
+	node from;
+	node to;
+	dist weight;
+};
+
+const auto inf_dist
+	= std::numeric_limits<dist>::infinity();
+```
 
 
-*Zeigen des Quellcodes (anderes Dokument im Repository)*
+Code
+----
+
+```cpp
+std::vector<dist> bellman_ford(std::size_t node_count,
+		const std::vector<edge>& edges, node source) {
+	std::vector<dist> min_dists(node_count, inf_dist);
+	min_dists[source] = 0;
+	for (std::size_t i = 0; i < node_count + 1; ++i) {
+		bool changes = false;
+		for(const auto& e: edges) {
+			const auto old_dist = min_dists[e.to];
+			const auto new_dist = min_dists[e.from]
+			                      + e.weight;
+			if (new_dist < old_dist) {
+				min_dists[e.to] = new_dist;
+				changes = true;
+			}
+		}
+		// ...
+```
+
+...
+
+Code
+----
+
+```cpp
+		// ...
+		if (!changes) { break; }
+		if (i == node_count) {
+			throw std::runtime_error{"negative cycle"};
+		}
+	}
+	return min_dists;
+}
+```
+
+
+Code
+----
+
+```cpp
+int main() try {
+	const auto edges = std::vector<edge>{
+		{0, 1,  7}, {0, 4,  -1},
+		{1, 0, 10}, {1, 3,  -4},
+		{2, 4,  1},
+		{3, 0,  0}, {3, 2, 2.5},
+		{4, 1, 23}
+	};
+	const auto min_dists = bellman_ford(5, edges, 0);
+	std::copy(min_dists.begin(), min_dists.end(),
+		std::ostream_iterator<dist>{std::cout, "\n"});
+} catch (std::runtime_error& e) {
+	std::cerr << "Error: " << e.what() << '\n';
+}
+```
 
 Weitere Eigenschaften
 ---------------------
