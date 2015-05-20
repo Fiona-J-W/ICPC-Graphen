@@ -29,3 +29,4 @@ bellman_ford_graph_gen
 pres.pdf
 main.pdf
 *.nav
+*.vrb

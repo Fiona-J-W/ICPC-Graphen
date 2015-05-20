@@ -15,19 +15,36 @@ Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten
 \begin{frame}
 \frametitle{APSP - Erster Ansatz}
 \begin{block}{Lösungsansatz}
-Man verwendet den bereits bekannten SSSP-Algorithmus ** , und führ diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
+Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
 \end{block}
 
 \begin{block}{Laufzeit}
-$|V| * O ((|E| + |V|) * log(|V|))$\\$
-= |V| * O ((|V|^2 + |V|) * log(|V|))$\\$
-= |V| * O ((|V|^2) * log(|V|)) $\\$
-= O ((|V|^3) * log(|V|))$\\
+$|V| \cdot O ((|E| + |V|) \cdot log(|V|))$\\$
+= |V| \cdot O ((|V|^2 + |V|) \cdot log(|V|))$\\$
+= |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$
+= O ((|V|^3) *\cdot log(|V|))$\\
 $\implies$ geht es schneller?
 \end{block}
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{APSP - Zweiter Ansatz}
+\begin{block}{Lösungsansatz}
+Wir wissen: jeder Pfad zwischen zwei Knoten ist entweder bereits der kürzeste, oder es gibt einen Kürzeren Pfad als zwei Verknüpfung anderer Pfade über mindestens einen dritten Knoten.
+\end{block}
+
+\begin{block}{Genauer}
+Systematisch in einer Adjazenzmatrix A:
+Nehme für jeden Pfad $A[i][j] = \min\left(A[i][j], A[i][k] + A[i][k]\right)$, d.h. entweder der Pfad ist bereits minimal, oder ein Pfad über Knoten k ist kürzer und wird als neues Minimum übernommen.
+Wenn man nun richtig iteriert, erhält man alle minimalen Pfade.
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Code}
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{Code}
@@ -36,8 +53,8 @@ $\implies$ geht es schneller?
 for (int k = 0; k < V; k++)
     for (int i = 0; i < V; i++)
         for (int j = 0; j < V; j++)
-			AdjMat[i][j] = min(AdjMat[i][j],
-			    AdjMat[i][k] + AdjMat[k][j]);
+            AdjMat[i][j] = min(AdjMat[i][j],
+                AdjMat[i][k] + AdjMat[k][j]);
 \end{lstlisting}
 
 ~\\$\implies$ der Aufwand liegt in $O(|V|^3)$
@@ -75,6 +92,31 @@ for (int k = 0; k < V; k++)
 \item[+] Für andere Probleme günstig anzuwenden, wenn $|V|< 400$
 \item[-- --] Für andere Probleme \textbf{nur} günstig anzuwenden, wenn $|V|< 400$
 \end{itemize}
+
+$\implies$ Gut für das ursprüngliche Problem\\
+$\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Zusammenfassung}
+\footnotesize{\begin{table}
+\begin{tabular}{l l l l l}
+\toprule
+\textbf{Kriterium} & \textbf{Breitensuche} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
+\midrule
+Laufzeit in O() & $O(|V| + |E|)$ & $(V+E)\log(V)$ & $O(|V| \cdot |E|)$ & $O(|V|^3)$ \\
+Max. Größe & $V,E \leq 10M$  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V,E \leq 400$ \\
+Ungewichtet & Bestes & Ok & Schlecht & I.A. Schlecht \\
+Gewichtet & Falsch & Bestes & Ok & I.A. Schlecht \\
+Neg. Gewichte & Falsch & Ok & Ok & I.A. Schlecht \\
+Neg. Zyklen & Nein & Nein & Aufspürbar & Aufspürbar \\
+Kleine Graphen & S.o. & Overkill & Overkill & Bestes \\
+\bottomrule
+\end{tabular}
+\caption{Übersicht}
+\end{table}}
 \end{frame}
 
 %------------------------------------------------
