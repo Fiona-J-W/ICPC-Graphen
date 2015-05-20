@@ -1,4 +1,4 @@
-\section{SSSP}
+\section{Single Source Shortest Path (SSSP)}
 
 \begin{frame}{Übersicht}
 
@@ -16,7 +16,6 @@
 \end{frame}
 
 \begin{frame}{Ansätze}
-
 \begin{itemize}
 \item
   Lösung: rohe %\sout{Gewalt}
@@ -28,16 +27,17 @@
   Idee 1: vollständige Tiefensuche.
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
   \item
     selbst für Brute-Force-Verhältnisse zu langsam (exponentielle
-    Laufzeit?) \emph{TODO: ?}
+    Laufzeit)
   \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{Ansätze}
+\begin{itemize}
 \item
   Idee 2:
-
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
   \item
     kürzester Pfad enthält maximal $|V| - 1$ Kanten
   \item
@@ -45,7 +45,6 @@
     Pfade mit bis zu $i - 1$ Knoten kennen:
 
     \begin{itemize}
-    \itemsep1pt\parskip0pt\parsep0pt
     \item
       Zu den kürzesten Pfaden mit bis zu $i$ Kanten fehlt höchstens eine
       Kante.
@@ -61,7 +60,6 @@
   Idee 2 ist offensichtlich vielversprechender, sie führt zum
   Algorithmus von Belllman und Ford.
 \end{itemize}
-
 \end{frame}
 
 \begin{frame}{Initialisierung}
