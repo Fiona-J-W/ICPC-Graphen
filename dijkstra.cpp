@@ -6,78 +6,101 @@
 using namespace std;
 
 struct edge {
-	int to;
-	double weight;
+  size_t to;
+  double weight;
 };
 
 
 bool operator < (const edge& e1, const edge& e2) {
-    return e1.weight < e2.weight;
+	   // inversed
+    return e1.weight > e2.weight;
 }
-
 
 using node = vector<edge>;
 
-vector<double> dijkstra(vector<node>& nodes, int startnode /*, int target */) {
-	// initialize all distances with infinity
-	vector<double> distances (nodes.size(), 100000000000);
+vector<double> dijkstra(vector<node>& nodes, size_t startnode) {
+  vector<double> distances (nodes.size(), 100000000000);
 
-	priority_queue<edge> todo;
-	
-	edge start;
-	start.to = startnode;
-	start.weight = 0;
+  priority_queue<edge> todo;
 
-	todo.push(start);
+  todo.push({startnode, 0});
 
-	while(!todo.empty()) {
-		auto current = todo.top();
-		todo.pop();
-	
-		// early return possible, like this: 
-		// if(current.to == target) returen current.weight;
+  while(!todo.empty()) {
+    auto current = todo.top();
+    todo.pop();
 
-		// only if there is no better way to reach the node
-		if(current.weight < distances[current.to]) {
-			distances[current.to] = current.weight;
+    if(current.weight < distances[current.to]) {
+      distances[current.to] = current.weight;
 
-			for(int i = 0; i < nodes[current.to].size(); i++) {
-				edge next = nodes[current.to][i];
-				next.weight += current.weight;
+      for(size_t i = 0; i < nodes[current.to].size(); i++) {
+        edge next = nodes[current.to][i];
+        next.weight += current.weight;
 
-				todo.push(next);
-			}
-		}
-	}
+        todo.push(next);
+      }
+    }
+  }
 
-	return distances;
+  return distances;
+}
+
+int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
+  vector<double> distances (nodes.size(), 100000000000);
+
+  priority_queue<edge> todo;
+
+  todo.push({startnode, 0});
+
+  while(!todo.empty()) {
+    auto current = todo.top();
+    todo.pop();
+
+    // Early return
+    if(current.to == target) return current.weight;
+
+    if(current.weight < distances[current.to]) {
+      distances[current.to] = current.weight;
+
+      for(size_t i = 0; i < nodes[current.to].size(); i++) {
+        edge next = nodes[current.to][i];
+        next.weight += current.weight;
+
+        todo.push(next);
+      }
+    }
+  }
+
+  // target not found
+  return -1;
 }
 
 
 int main() {
-	vector<node> nodes = { 
-		{ 
-			// start
-			{ 1, 1 },
-			{ 2, 3 }
-		},
-		{ 
-			{ 3, 3 },
-		},
-		{ 
-			{ 4, 4 },
-		},
-		{
-			{ 4, 1 }
-		},
-		{
-			// ziel
-		}		
-	};
+  vector<node> nodes = {
+    {
+      // start
+      { 1, 1 },
+      { 2, 3 }
+    },
+    {
+      { 3, 3 },
+    },
+    {
+      { 4, 4 },
+    },
+    {
+      { 4, 1 }
+    },
+    {
+      // ziel
+    }
+  };
 
-	auto res = dijkstra(nodes, 0);
+  auto res = dijkstra(nodes, 0);
 
-	for(int i = 0; i < res.size(); i++) {
-		cout << "res[" << i << "] = " << res[i] << endl;
-	}
+  for(size_t i = 0; i < res.size(); i++) {
+    cout << "res[" << i << "] = " << res[i] << endl;
+  }
+
+  cout << "dijkstra_to_target(nodes, 0, 4) = " << dijkstra_to_target(nodes, 0, 4) << endl;
 }

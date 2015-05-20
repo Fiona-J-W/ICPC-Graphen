@@ -22,7 +22,7 @@ Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bed
 $|V| \cdot O ((|E| + |V|) \cdot log(|V|))$\\$
 = |V| \cdot O ((|V|^2 + |V|) \cdot log(|V|))$\\$
 = |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$
-= O ((|V|^3) *\cdot log(|V|))$\\
+= O ((|V|^3) \cdot log(|V|))$\\
 $\implies$ geht es schneller?
 \end{block}
 \end{frame}
@@ -41,6 +41,11 @@ Nehme für jeden Pfad $A[i][j] = \min\left(A[i][j], A[i][k] + A[i][k]\right)$, d
 Wenn man nun richtig iteriert, erhält man alle minimalen Pfade.
 \end{block}
 \end{frame}
+
+%------------------------------------------------
+
+\subsection{Anwendung am Beispiel}
+
 
 %------------------------------------------------
 
@@ -98,6 +103,8 @@ $\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
 \end{frame}
 
 %------------------------------------------------
+
+\section{Zusammenfassung}
 
 \begin{frame}
 \frametitle{Zusammenfassung}
