@@ -27,6 +27,5 @@ bellman_ford_graph_gen
 *.synctex.gz
 *.snm
 pres.pdf
-main.pdf
 *.nav
 *.vrb
