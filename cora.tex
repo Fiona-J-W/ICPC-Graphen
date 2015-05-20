@@ -19,10 +19,10 @@ Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bed
 \end{block}
 
 \begin{block}{Laufzeit}
-$|V| * O ((|E| + |V|) * log(|V|))$\\$
-= |V| * O ((|V|^2 + |V|) * log(|V|))$\\$
-= |V| * O ((|V|^2) * log(|V|)) $\\$
-= O ((|V|^3) * log(|V|))$\\
+$|V| \cdot O ((|E| + |V|) \cdot log(|V|))$\\$
+= |V| \cdot O ((|V|^2 + |V|) \cdot log(|V|))$\\$
+= |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$
+= O ((|V|^3) *\cdot log(|V|))$\\
 $\implies$ geht es schneller?
 \end{block}
 \end{frame}
@@ -92,6 +92,31 @@ for (int k = 0; k < V; k++)
 \item[+] Für andere Probleme günstig anzuwenden, wenn $|V|< 400$
 \item[-- --] Für andere Probleme \textbf{nur} günstig anzuwenden, wenn $|V|< 400$
 \end{itemize}
+
+$\implies$ Gut für das ursprüngliche Problem\\
+$\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Zusammenfassung}
+\footnotesize{\begin{table}
+\begin{tabular}{l l l l l}
+\toprule
+\textbf{Kriterium} & \textbf{Breitensuche} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
+\midrule
+Laufzeit & $O(|V| + |E|)$ & $O((V+E)\log(V))$ & $O(|V| \cdot |E|)$ & $O(|V|^3)$ \\
+Max. Größe & $V,E \leq 10M$  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V,E \leq 400$ \\
+Ungewichtet & Bestes & Ok & Schlecht & I.A. Schlecht \\
+Gewichtet & Falsch & Bestes & Ok & I.A. Schlecht \\
+Neg. Gewichte & Falsch & Diese Variante: Ok & Ok & I.A. Schlecht \\
+Neg. Zyklen & Nein & Nein & Aufspürbar & Aufspürbar \\
+Kleine Graphen & Falsch m.Gewicht & Overkill & Overkill & Bestes \\
+\bottomrule
+\end{tabular}
+\caption{Übersicht}
+\end{table}}
 \end{frame}
 
 %------------------------------------------------
