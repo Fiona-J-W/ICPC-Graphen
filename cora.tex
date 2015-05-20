@@ -15,7 +15,7 @@ Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten
 \begin{frame}
 \frametitle{APSP - Erster Ansatz}
 \begin{block}{Lösungsansatz}
-Man verwendet den bereits bekannten SSSP-Algorithmus ** , und führ diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
+Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
 \end{block}
 
 \begin{block}{Laufzeit}
@@ -28,6 +28,22 @@ $\implies$ geht es schneller?
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{APSP - Zweiter Ansatz}
+\begin{block}{Lösungsansatz}
+Wir wissen: jeder Pfad zwischen zwei Knoten ist entweder bereits der kürzeste, oder es gibt einen Kürzeren Pfad als zwei Verknüpfung anderer Pfade über mindestens einen dritten Knoten.
+\end{block}
+
+\begin{block}{Laufzeit}
+Systematisch in einer Adjazenzmatrix A:
+Nehme für jeden Pfad A[i][j] = min(A[i][j], A[i][k] + A[i][k]),
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Code}
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{Code}
