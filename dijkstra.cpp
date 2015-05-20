@@ -30,7 +30,7 @@ vector<double> dijkstra(vector<node>& nodes, int startnode) {
 
 	todo.push(start);
 
-	while(todo.size() > 0) {
+	while(!todo.empty()) {
 		auto current = todo.top();
 		todo.pop();
 
