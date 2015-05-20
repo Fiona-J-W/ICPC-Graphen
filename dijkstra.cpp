@@ -18,7 +18,7 @@ bool operator < (const edge& e1, const edge& e2) {
 
 using node = vector<edge>;
 
-vector<double> dijkstra(vector<node>& nodes, int startnode) {
+vector<double> dijkstra(vector<node>& nodes, int startnode /*, int target */) {
 	// initialize all distances with infinity
 	vector<double> distances (nodes.size(), 100000000000);
 
@@ -33,6 +33,9 @@ vector<double> dijkstra(vector<node>& nodes, int startnode) {
 	while(!todo.empty()) {
 		auto current = todo.top();
 		todo.pop();
+	
+		// early return possible, like this: 
+		// if(current.to == target) returen current.weight;
 
 		// only if there is no better way to reach the node
 		if(current.weight < distances[current.to]) {
