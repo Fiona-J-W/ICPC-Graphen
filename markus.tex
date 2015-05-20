@@ -92,6 +92,26 @@ $O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
 \end{block}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Kruskal}
+\begin{lstlisting}[basicstyle=\footnotesize]
+double kruskal(std::vector<edge>& edges, int maxnode) {
+    double fullweight = 0;
+    UnionFind ufind(maxnode + 1);
+    std::sort(edges.begin(), edges.end());
+    for (const auto& e : edges) {
+        if(!ufind.sameSet(e.from, e.to)) {
+            ufind.unify(e.from, e.to);
+            fullweight += e.weight;
+        }
+    }
+    return fullweight;
+}
+\end{lstlisting}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Kruskal}
 \begin{block}{Weitere lösbare Probleme}
