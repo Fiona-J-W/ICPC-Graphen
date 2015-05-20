@@ -106,13 +106,13 @@ $\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
 \toprule
 \textbf{Kriterium} & \textbf{Breitensuche} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
 \midrule
-Laufzeit & $O(|V| + |E|)$ & $O((V+E)\log(V))$ & $O(|V| \cdot |E|)$ & $O(|V|^3)$ \\
+Laufzeit in O() & $O(|V| + |E|)$ & $(V+E)\log(V)$ & $O(|V| \cdot |E|)$ & $O(|V|^3)$ \\
 Max. Größe & $V,E \leq 10M$  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V,E \leq 400$ \\
 Ungewichtet & Bestes & Ok & Schlecht & I.A. Schlecht \\
 Gewichtet & Falsch & Bestes & Ok & I.A. Schlecht \\
-Neg. Gewichte & Falsch & Diese Variante: Ok & Ok & I.A. Schlecht \\
+Neg. Gewichte & Falsch & Ok & Ok & I.A. Schlecht \\
 Neg. Zyklen & Nein & Nein & Aufspürbar & Aufspürbar \\
-Kleine Graphen & Falsch m.Gewicht & Overkill & Overkill & Bestes \\
+Kleine Graphen & S.o. & Overkill & Overkill & Bestes \\
 \bottomrule
 \end{tabular}
 \caption{Übersicht}
