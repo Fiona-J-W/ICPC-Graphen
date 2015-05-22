@@ -132,41 +132,6 @@ vector<double> dijkstra(vector<node>& nodes, size_t startnode) {
 
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Code}
-\begin{lstlisting}[basicstyle=\tiny]
-int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
-  vector<double> distances (nodes.size(), 100000000000);
-
-  priority_queue<edge> todo;
-
-  todo.push({startnode, 0});
-  
-  while(!todo.empty()) {
-    auto current = todo.top();
-    todo.pop();
-
-    // Early return
-    if(current.to == target) return current.weight;
-
-    if(current.weight < distances[current.to]) {
-      distances[current.to] = current.weight;
-
-      for(size_t i = 0; i < nodes[current.to].size(); i++) {
-        edge next = nodes[current.to][i];
-        next.weight += current.weight;
-
-        todo.push(next);
-      }
-    }
-  }
-
-  // target not found
-  return -1;
-}
-\end{lstlisting}
-
-\end{frame}
 
 \begin{frame}
 \frametitle{Beispiel}
