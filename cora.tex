@@ -6,7 +6,7 @@
 \begin{frame}
 \frametitle{APSP - All Pairs Shortest Paths}
 \begin{block}{Problemstellung}
-Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten Pfad zwischen allen Knoten i zu allen Knoten j herausfinden, wobei i, j aus V sind.
+Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten Pfad zwischen allen Knoten i zu allen Knoten j herausfinden.
 \end{block}
 \end{frame}
 
@@ -15,15 +15,15 @@ Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten
 \begin{frame}
 \frametitle{APSP - Erster Ansatz}
 \begin{block}{Lösungsansatz}
-Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall |V|-mal.
+Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall $|V|$-mal.
 \end{block}
 
 \begin{block}{Laufzeit}
-$|V| \cdot O ((|E| + |V|) \cdot log(|V|))$\\$
-= |V| \cdot O ((|V|^2 + |V|) \cdot log(|V|))$\\$
-= |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$
+$|V| \cdot O (|E| + |V| \cdot log(|V|))$\\$
+= |V| \cdot O (|V|^2 + |V| \cdot log(|V|))$\\$ fehler
+= |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$ fehler 
 = O ((|V|^3) \cdot log(|V|))$\\
-$\implies$ geht es schneller?
+$\implies$ geht es einfacher in etwa der selben Zeit?
 \end{block}
 \end{frame}
 
@@ -44,11 +44,6 @@ Wenn man nun richtig iteriert, erhält man alle minimalen Pfade.
 
 %------------------------------------------------
 
-\subsection{Anwendung am Beispiel}
-
-
-%------------------------------------------------
-
 \subsection{Code}
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
@@ -58,8 +53,10 @@ Wenn man nun richtig iteriert, erhält man alle minimalen Pfade.
 for (int k = 0; k < V; k++)
     for (int i = 0; i < V; i++)
         for (int j = 0; j < V; j++)
-            AdjMat[i][j] = min(AdjMat[i][j],
-                AdjMat[i][k] + AdjMat[k][j]);
+            A[i][j] = min(
+              A[i][j],
+              A[i][k] + A[k][j]
+            );
 \end{lstlisting}
 
 ~\\$\implies$ der Aufwand liegt in $O(|V|^3)$
@@ -68,19 +65,104 @@ for (int k = 0; k < V; k++)
 
 %------------------------------------------------
 
-\subsection{Weitere Anwendungen} 
+\begin{frame}
+\frametitle{Beispiel - Urzustand}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph1.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten A}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph2.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten B}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph3.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten C}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph4.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (1)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph5.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (2)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph6.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (3)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph7.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (4)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph8.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (5)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph9.JPG}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Beispiel - Über Knoten D (6)}
+
+\includegraphics[width=\linewidth]{floyd_warshall_graphs/graph10.JPG}
+
+\end{frame}
+
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{Weitere Anwendungen}
 \begin{itemize}
 
 \item Auch für SSSP - Probleme anwendbar (wenn $\vert V \vert < 400$)
-\item Detektion von negativen oder günstigsten Zyklen möglich $\implies$ setze die Diagonale auf Unendlich (hohen Wert)
+\item Detektion von negativen oder günstigsten Zyklen möglich $\implies$ ein negativer Zyklus existiert genau dann, wenn ein Diagonaleintrag negativ ist
 \item Finden des Durchmessers eines Graphen (der längste der kürzesten Pfade)
 \item Minimax, Maximin
-\item Transitive Hülle berechnen (wer ist mit wen verbunden $\rightarrow$ bits)
-\item Finden von starken Zusammenhangskomponenten
-\item evtl. weitere Anwendungen in konkreten Fällen
 \end{itemize}
 \end{frame}
 
@@ -108,22 +190,23 @@ $\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
 
 \begin{frame}
 \frametitle{Zusammenfassung}
-\footnotesize{\begin{table}
-\begin{tabular}{l l l l l}
+\small{\begin{table}
+\begin{tabular}{l l l l}
 \toprule
-\textbf{Kriterium} & \textbf{Breitensuche} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
+\textbf{Kriterium} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
 \midrule
-Laufzeit in O() & $O(|V| + |E|)$ & $(V+E)\log(V)$ & $O(|V| \cdot |E|)$ & $O(|V|^3)$ \\
-Max. Größe & $V,E \leq 10M$  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V,E \leq 400$ \\
-Ungewichtet & Bestes & Ok & Schlecht & I.A. Schlecht \\
-Gewichtet & Falsch & Bestes & Ok & I.A. Schlecht \\
-Neg. Gewichte & Falsch & Ok & Ok & I.A. Schlecht \\
-Neg. Zyklen & Nein & Nein & Aufspürbar & Aufspürbar \\
-Kleine Graphen & S.o. & Overkill & Overkill & Bestes \\
+Laufzeit & $O(V+E)\log(V)$ & $O(V \cdot E)$ & $O(V^3)$ \\
+Max. Größe  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V \leq 400$ \\
+Ungewichtet & Ok & Schlecht & I.A. Schlecht \\
+Gewichtet & Bestes & Ok & I.A. Schlecht \\
+Neg. Gewichte & Ok & Ok & I.A. Schlecht \\
+Neg. Zyklen & Nein & Aufspürbar & Aufspürbar \\
+Kleine Graphen & Overkill & Overkill & Bestes \\
 \bottomrule
 \end{tabular}
 \caption{Übersicht}
 \end{table}}
+Anmerkung: Lese $V$ als $|V|$ und $E$ als $|E|$
 \end{frame}
 
 %------------------------------------------------

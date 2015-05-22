@@ -10,7 +10,7 @@
 \begin{itemize}
 \item „finde das billigste Netzwerk“
 \item genau: \\
-Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist ein zusammenhgängender Teilgraph mit geringstem Gesamtgewicht.
+Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist ein Spannbaum mit geringstem Gesamtgewicht.
 \end{itemize}
 \end{block}
 
@@ -86,8 +86,6 @@ Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist 
 \begin{itemize}
 \item sortiere Kanten nach Gewicht
 \item benutze Union-Find um Zyklen zu detektieren
-\item Laufzeit:\\
-$O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
 \end{itemize}
 \end{block}
 \end{frame}
@@ -96,8 +94,8 @@ $O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
 \begin{frame}[fragile]
 \frametitle{Kruskal}
 \begin{lstlisting}[basicstyle=\footnotesize]
-double kruskal(std::vector<edge>& edges, int maxnode) {
-    double fullweight = 0;
+int kruskal(std::vector<edge>& edges, int maxnode) {
+    int fullweight = 0;
     UnionFind ufind(maxnode + 1);
     std::sort(edges.begin(), edges.end());
     for (const auto& e : edges) {
@@ -111,14 +109,27 @@ double kruskal(std::vector<edge>& edges, int maxnode) {
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}
+\frametitle{Kruskal}
+Für Laufzeiten: $n:=|V|$, $m:=|E|$ \\~\\
+\begin{block}{Laufzeit}
+$\ O(m\log(m)+ m\cdot\alpha(n))=O(m\log(m))$\\$\ =O(m\log(n^2))=O(2m\log(n))=O(m\log(n))$
+
+\end{block}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Kruskal}
 \begin{block}{Weitere lösbare Probleme}
 \begin{itemize}
-\item "MST" finden, wenn Kanten vorgegeben sind
+\item Maximum Spanning Tree
+\item „MST" finden, wenn Kanten vorgegeben sind
 \item Minimum Spanning Forest: mehrere getrennte Bäume
-\item min-max Problem
+\item Minimax-Problem:
+\begin{itemize}
+\item Finden des Pfades zwischen zwei Knoten mit dem kleinsten Maximalgewicht einer Kante
+\end{itemize}
 \end{itemize}
 \end{block}
 \end{frame}
