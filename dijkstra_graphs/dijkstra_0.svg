@@ -21,19 +21,21 @@
       <text x="381.0897" xml:space="preserve" y="334.8263" clip-path="url(#clipPath2)" stroke="none">Z</text>
       <circle fill="none" r="15" clip-path="url(#clipPath2)" cx="385.2" cy="330.672" stroke="red"/>
       <circle fill="none" r="15" clip-path="url(#clipPath2)" cx="353.968" cy="162.224"/>
-      <text x="489.6626" xml:space="preserve" y="120.5223" clip-path="url(#clipPath2)" stroke="none">0</text>
+      <text x="485.898" xml:space="preserve" y="120.5223" clip-path="url(#clipPath2)" stroke="none">inf</text>
       <rect fill="none" x="478.48" width="30" height="30" y="101.368" clip-path="url(#clipPath2)"/>
-      <text x="489.6626" xml:space="preserve" y="150.5223" clip-path="url(#clipPath2)" stroke="none">3</text>
+      <text x="485.898" xml:space="preserve" y="150.5223" clip-path="url(#clipPath2)" stroke="none">inf</text>
       <rect fill="none" x="478.48" width="30" height="30" y="131.368" clip-path="url(#clipPath2)"/>
-      <text x="489.6626" xml:space="preserve" y="180.5223" clip-path="url(#clipPath2)" stroke="none">1</text>
+      <text x="485.898" xml:space="preserve" y="180.5223" clip-path="url(#clipPath2)" stroke="none">inf</text>
       <rect fill="none" x="478.48" width="30" height="30" y="161.368" clip-path="url(#clipPath2)"/>
-      <text x="489.6626" xml:space="preserve" y="210.5223" clip-path="url(#clipPath2)" stroke="none">4</text>
+      <text x="485.898" xml:space="preserve" y="210.5223" clip-path="url(#clipPath2)" stroke="none">inf</text>
       <rect fill="none" x="478.48" width="30" height="30" y="191.368" clip-path="url(#clipPath2)"/>
-      <text x="489.6626" xml:space="preserve" y="240.5223" clip-path="url(#clipPath2)" stroke="none">5</text>
+      <text x="485.898" xml:space="preserve" y="240.5223" clip-path="url(#clipPath2)" stroke="none">inf</text>
       <rect fill="none" x="478.48" width="30" height="30" y="221.368" clip-path="url(#clipPath2)"/>
       <text x="468.1939" xml:space="preserve" y="90.5223" clip-path="url(#clipPath2)" font-family="monospace" stroke="none">Distance</text>
       <text x="585.0104" xml:space="preserve" y="90.5223" clip-path="url(#clipPath2)" font-family="monospace" stroke="none">Queue</text>
       <rect fill="none" x="588.072" width="30" height="150" y="101.368" clip-path="url(#clipPath2)"/>
+      <text x="599.2546" xml:space="preserve" y="120.5223" clip-path="url(#clipPath2)" stroke="none">0</text>
+      <rect fill="none" x="588.072" width="30" height="30" y="101.368" clip-path="url(#clipPath2)"/>
       <path fill="none" d="M158.8915 116.7187 L169.7184 171.8314" clip-path="url(#clipPath2)"/>
       <path d="M171.2605 179.6813 L173.8535 166.9426 L169.5256 170.8501 L164.0411 168.8702 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <text x="149.2293" xml:space="preserve" y="154.0413" clip-path="url(#clipPath2)" stroke="none">1</text>
@@ -59,6 +61,8 @@
       <path fill="rgb(187,187,187)" d="M478.48 211.9017 L465.4911 211.3641 L470.0363 215.0167 L468.9523 220.746 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M394.6214 318.9999 L455.0391 244.1494 L460.8948 238.3133 L465.9 236.368 L470.48 236.368" clip-path="url(#clipPath2)" stroke="rgb(187,187,187)"/>
       <path fill="rgb(187,187,187)" d="M478.48 236.368 L466.48 231.368 L469.48 236.368 L466.48 241.368 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M588.062 116.368 L516.4894 116.368" clip-path="url(#clipPath2)"/>
+      <path d="M508.4894 116.368 L520.4894 121.368 L517.4894 116.368 L520.4894 111.368 Z" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
   </g>
 </svg>
