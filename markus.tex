@@ -10,11 +10,54 @@
 \begin{itemize}
 \item „finde das billigste Netzwerk“
 \item genau: \\
-Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist ein zusammenhgängender Teilgraph mit geringstem Gesamtgewicht.
+Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist ein Spannbaum mit geringstem Gesamtgewicht.
 \end{itemize}
 \end{block}
-
 \end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/noweights.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/spanningtree1.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/spanningtree2.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/basic.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/spanningtree1_weights.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Minimum Spanning Tree (MST)}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/spanningtree2_weights.pdf}
+\end{figure}
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Minimum Spanning Tree (MST)}
@@ -39,44 +82,59 @@ Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph1.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step1.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph2.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step2.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph3.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step3.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph4.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step4.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph5.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step5.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Lösung}
 \begin{figure}
-\includegraphics[width=0.75\linewidth, trim = 2mm 2mm 2mm 2mm, clip = true]{kruskal_graphs/graph6.pdf}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step6.pdf}
 \end{figure}
 \end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step7.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösung}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{kruskal_graphs/step8.pdf}
+\end{figure}
+\end{frame}
+
 
 \subsection{Lösung: Kruskal}
 
@@ -86,8 +144,6 @@ Gegeben sei ein zusammenhängender ungerichteter gewichteter Graph, gesucht ist 
 \begin{itemize}
 \item sortiere Kanten nach Gewicht
 \item benutze Union-Find um Zyklen zu detektieren
-\item Laufzeit:\\
-$O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
 \end{itemize}
 \end{block}
 \end{frame}
@@ -96,8 +152,8 @@ $O(E\log(E)+ E\cdot\alpha)=O(E\log(E))=O(E\log(V^2))=O(2E\log(V))=O(E\log(V))$
 \begin{frame}[fragile]
 \frametitle{Kruskal}
 \begin{lstlisting}[basicstyle=\footnotesize]
-double kruskal(std::vector<edge>& edges, int maxnode) {
-    double fullweight = 0;
+int kruskal(std::vector<edge>& edges, int maxnode) {
+    int fullweight = 0;
     UnionFind ufind(maxnode + 1);
     std::sort(edges.begin(), edges.end());
     for (const auto& e : edges) {
@@ -111,14 +167,27 @@ double kruskal(std::vector<edge>& edges, int maxnode) {
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}
+\frametitle{Kruskal}
+Für Laufzeiten: $n:=|V|$, $m:=|E|$ \\~\\
+\begin{block}{Laufzeit}
+$\ O(m\log(m)+ m\cdot\alpha(n))=O(m\log(m))$\\$\ =O(m\log(n^2))=O(2m\log(n))=O(m\log(n))$
+
+\end{block}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Kruskal}
 \begin{block}{Weitere lösbare Probleme}
 \begin{itemize}
+\item Maximum Spanning Tree
 \item „MST" finden, wenn Kanten vorgegeben sind
 \item Minimum Spanning Forest: mehrere getrennte Bäume
-\item Minimax-Problem
+\item Minimax-Problem:
+\begin{itemize}
+\item Finden des Pfades zwischen zwei Knoten mit dem kleinsten Maximalgewicht einer Kante
+\end{itemize}
 \end{itemize}
 \end{block}
 \end{frame}

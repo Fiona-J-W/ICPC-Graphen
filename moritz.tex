@@ -132,38 +132,87 @@ vector<double> dijkstra(vector<node>& nodes, size_t startnode) {
 
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Code}
-\begin{lstlisting}[basicstyle=\tiny]
-int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
-  vector<double> distances (nodes.size(), 100000000000);
 
-  priority_queue<edge> todo;
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_0.pdf}
+\end{figure}
+\end{frame}
 
-  todo.push({startnode, 0});
-  
-  while(!todo.empty()) {
-    auto current = todo.top();
-    todo.pop();
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_1.pdf}
+\end{figure}
+\end{frame}
 
-    // Early return
-    if(current.to == target) return current.weight;
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_2.pdf}
+\end{figure}
+\end{frame}
 
-    if(current.weight < distances[current.to]) {
-      distances[current.to] = current.weight;
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_3.pdf}
+\end{figure}
+\end{frame}
 
-      for(size_t i = 0; i < nodes[current.to].size(); i++) {
-        edge next = nodes[current.to][i];
-        next.weight += current.weight;
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_4.pdf}
+\end{figure}
+\end{frame}
 
-        todo.push(next);
-      }
-    }
-  }
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_5.pdf}
+\end{figure}
+\end{frame}
 
-  // target not found
-  return -1;
-}
-\end{lstlisting}
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_6.pdf}
+\end{figure}
+\end{frame}
 
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_7.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_8.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_9.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_A.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+\begin{figure}
+\includegraphics[scale=.8]{dijkstra_graphs/dijkstra_B.pdf}
+\end{figure}
 \end{frame}
