@@ -7,7 +7,7 @@ using namespace std;
 
 struct edge {
   size_t to;
-  double weight;
+  int weight;
 };
 
 
@@ -18,8 +18,8 @@ bool operator < (const edge& e1, const edge& e2) {
 
 using node = vector<edge>;
 
-vector<double> dijkstra(vector<node>& nodes, size_t startnode) {
-  vector<double> distances (nodes.size(), 100000000000);
+vector<int> dijkstra(vector<node>& nodes, size_t startnode) {
+  vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
 
@@ -45,7 +45,7 @@ vector<double> dijkstra(vector<node>& nodes, size_t startnode) {
 }
 
 int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
-  vector<double> distances (nodes.size(), 100000000000);
+  vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
 
