@@ -6,7 +6,7 @@
 using namespace std;
 
 struct edge {
-  size_t to;
+  int to;
   int weight;
 };
 
@@ -16,7 +16,7 @@ bool operator < (const edge& e1, const edge& e2) {
     return e1.weight > e2.weight;
 }
 
-vector<int> dijkstra(vector<vector<edge>>& nodes, size_t startnode) {
+vector<int> dijkstra(vector<vector<edge>>& nodes, int startnode) {
   vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
@@ -30,7 +30,7 @@ vector<int> dijkstra(vector<vector<edge>>& nodes, size_t startnode) {
     if(current.weight < distances[current.to]) {
       distances[current.to] = current.weight;
 
-      for(size_t i = 0; i < nodes[current.to].size(); i++) {
+      for(int i = 0; i < nodes[current.to].size(); i++) {
         edge next = nodes[current.to][i];
         next.weight += current.weight;
 
@@ -42,7 +42,7 @@ vector<int> dijkstra(vector<vector<edge>>& nodes, size_t startnode) {
   return distances;
 }
 
-int dijkstra_to_target(vector<vector<edge>>& nodes, size_t startnode, size_t target) {
+int dijkstra_to_target(vector<vector<edge>>& nodes, int startnode, int target) {
   vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
@@ -59,7 +59,7 @@ int dijkstra_to_target(vector<vector<edge>>& nodes, size_t startnode, size_t tar
     if(current.weight < distances[current.to]) {
       distances[current.to] = current.weight;
 
-      for(size_t i = 0; i < nodes[current.to].size(); i++) {
+      for(int i = 0; i < nodes[current.to].size(); i++) {
         edge next = nodes[current.to][i];
         next.weight += current.weight;
 
@@ -96,7 +96,7 @@ int main() {
 
   auto res = dijkstra(nodes, 0);
 
-  for(size_t i = 0; i < res.size(); i++) {
+  for(int i = 0; i < res.size(); i++) {
     cout << "res[" << i << "] = " << res[i] << endl;
   }
 
