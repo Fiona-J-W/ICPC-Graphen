@@ -16,9 +16,7 @@ bool operator < (const edge& e1, const edge& e2) {
     return e1.weight > e2.weight;
 }
 
-using node = vector<edge>;
-
-vector<int> dijkstra(vector<node>& nodes, size_t startnode) {
+vector<int> dijkstra(vector<vector<edge>>& nodes, size_t startnode) {
   vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
@@ -44,7 +42,7 @@ vector<int> dijkstra(vector<node>& nodes, size_t startnode) {
   return distances;
 }
 
-int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
+int dijkstra_to_target(vector<vector<edge>>& nodes, size_t startnode, size_t target) {
   vector<int> distances (nodes.size(), 2000000000);
 
   priority_queue<edge> todo;
@@ -76,7 +74,7 @@ int dijkstra_to_target(vector<node>& nodes, size_t startnode, size_t target) {
 
 
 int main() {
-  vector<node> nodes = {
+  vector<vector<edge>> nodes = {
     {
       // start
       { 1, 1 },
