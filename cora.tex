@@ -15,14 +15,14 @@ Man hat einen Graphen gegeben, der gewichtet ist. Nun möchte man den kürzesten
 \begin{frame}
 \frametitle{APSP - Erster Ansatz}
 \begin{block}{Lösungsansatz}
-Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall $|V|$-mal.
+Man verwendet den bereits bekannten SSSP-Algorithmus, und führe diesen nach bedarf aus, d.h. in diesem Fall n-mal.
 \end{block}
 
 \begin{block}{Laufzeit}
-$|V| \cdot O (|E| + |V| \cdot log(|V|))$\\$
-= |V| \cdot O (|V|^2 + |V| \cdot log(|V|))$\\$ fehler
-= |V| \cdot O ((|V|^2) \cdot log(|V|)) $\\$ fehler 
-= O ((|V|^3) \cdot log(|V|))$\\
+$n \cdot O (m + n \cdot log(n))$\\$
+= n \cdot O (n^2 + n \cdot log(n))$\\$ 
+= n \cdot O (n^2 + n^2) $\\$ 
+= O (n^3) $\\
 $\implies$ geht es einfacher in etwa der selben Zeit?
 \end{block}
 \end{frame}
@@ -59,7 +59,7 @@ for (int k = 0; k < V; k++)
             );
 \end{lstlisting}
 
-~\\$\implies$ der Aufwand liegt in $O(|V|^3)$
+~\\$\implies$ der Aufwand liegt in $O(n^3)$
 
 \end{frame}
 
@@ -174,7 +174,7 @@ for (int k = 0; k < V; k++)
 \frametitle{Beurteilung}
 \begin{itemize}
 
-\item[+] Asymptotische Komplexität $\in O(|V|^3)$  und mit Speicher $\in O(|V|^2)$
+\item[+] Asymptotische Komplexität $\in O(n^3)$  und mit Speicher $\in O(n^2)$
 \item[+] Sehr leicht zu implementieren (Vierzeiler)
 \item[+] Für andere Probleme günstig anzuwenden, wenn $|V|< 400$
 \item[-- --] Für andere Probleme \textbf{nur} günstig anzuwenden, wenn $|V|< 400$
@@ -195,7 +195,7 @@ $\implies$ Auch nützlich für andere Probleme, solange $|V| < 400$
 \toprule
 \textbf{Kriterium} & \textbf{Dijkstra} & \textbf{Bellman Ford} &\textbf{Floyd Warshall}\\
 \midrule
-Laufzeit & $O(V+E)\log(V)$ & $O(V \cdot E)$ & $O(V^3)$ \\
+Laufzeit & $O(n+m)\log(n)$ & $O(n \cdot m)$ & $O(n^3)$ \\
 Max. Größe  & $V,E \leq 300K$ & $V,E \leq 10M$ & $V \leq 400$ \\
 Ungewichtet & Ok & Schlecht & I.A. Schlecht \\
 Gewichtet & Bestes & Ok & I.A. Schlecht \\
@@ -206,7 +206,7 @@ Kleine Graphen & Overkill & Overkill & Bestes \\
 \end{tabular}
 \caption{Übersicht}
 \end{table}}
-Anmerkung: Lese $V$ als $|V|$ und $E$ als $|E|$
+Erinnerung: $n:= |V|$ und $m:= |E|$
 \end{frame}
 
 %------------------------------------------------
