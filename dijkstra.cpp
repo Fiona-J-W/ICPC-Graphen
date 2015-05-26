@@ -5,21 +5,21 @@
 
 using namespace std;
 
-struct edge {
+struct ArrivalEvent {
   int to;
   int weight;
 };
 
 
-bool operator < (const edge& e1, const edge& e2) {
+bool operator < (const ArrivalEvent& e1, const ArrivalEvent& e2) {
 	   // inversed
     return e1.weight > e2.weight;
 }
 
-vector<int> dijkstra(vector<vector<edge>>& nodes, int startnode) {
+vector<int> dijkstra(vector<vector<ArrivalEvent>>& nodes, int startnode) {
   vector<int> distances (nodes.size(), 2000000000);
 
-  priority_queue<edge> todo;
+  priority_queue<ArrivalEvent> todo;
 
   todo.push({startnode, 0});
 
@@ -31,7 +31,7 @@ vector<int> dijkstra(vector<vector<edge>>& nodes, int startnode) {
       distances[current.to] = current.weight;
 
       for(int i = 0; i < nodes[current.to].size(); i++) {
-        edge next = nodes[current.to][i];
+        ArrivalEvent next = nodes[current.to][i];
         next.weight += current.weight;
 
         todo.push(next);
@@ -42,10 +42,10 @@ vector<int> dijkstra(vector<vector<edge>>& nodes, int startnode) {
   return distances;
 }
 
-int dijkstra_to_target(vector<vector<edge>>& nodes, int startnode, int target) {
+int dijkstra_to_target(vector<vector<ArrivalEvent>>& nodes, int startnode, int target) {
   vector<int> distances (nodes.size(), 2000000000);
 
-  priority_queue<edge> todo;
+  priority_queue<ArrivalEvent> todo;
 
   todo.push({startnode, 0});
 
@@ -60,7 +60,7 @@ int dijkstra_to_target(vector<vector<edge>>& nodes, int startnode, int target) {
       distances[current.to] = current.weight;
 
       for(int i = 0; i < nodes[current.to].size(); i++) {
-        edge next = nodes[current.to][i];
+        ArrivalEvent next = nodes[current.to][i];
         next.weight += current.weight;
 
         todo.push(next);
@@ -74,7 +74,7 @@ int dijkstra_to_target(vector<vector<edge>>& nodes, int startnode, int target) {
 
 
 int main() {
-  vector<vector<edge>> nodes = {
+  vector<vector<ArrivalEvent>> nodes = {
     {
       // start
       { 1, 1 },
