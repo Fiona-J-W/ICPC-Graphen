@@ -194,6 +194,7 @@ Dijkstra kommt nicht mit negativen Kanten zurecht
 \begin{frame}[fragile]{Code}
 \begin{lstlisting}[basicstyle=\tiny]
 using node = std::size_t;
+const auto infinity = std::numeric_limits<double>::infinity();
 
 struct edge {
     node from;
@@ -201,13 +202,6 @@ struct edge {
     double dist;
 };
 
-const auto infinity = std::numeric_limits<double>::infinity();
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Code}
-
-\begin{lstlisting}[basicstyle=\tiny]
 std::vector<dist> bellman_ford(const std::size_t        node_count,
                                const std::vector<edge>& edges,
                                node                     source
