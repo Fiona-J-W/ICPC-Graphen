@@ -1,4 +1,4 @@
-\subsection{Belllman-Ford}
+\subsection{Bellman-Ford}
 \begin{frame}{Übersicht}
 
 \begin{itemize}
@@ -57,7 +57,7 @@
   \end{itemize}
 \item
   Idee 2 ist offensichtlich vielversprechender, sie führt zum
-  Algorithmus von Belllman und Ford.
+  Algorithmus von Bellman und Ford.
 \end{itemize}
 \end{frame}
 
@@ -169,106 +169,58 @@
 \end{frame}
 
 \begin{frame}[fragile]{Code}
-\begin{lstlisting}[basicstyle=\footnotesize]
+\begin{lstlisting}[basicstyle=\tiny]
 using node = std::size_t;
-using dist = double;
 
 struct edge {
     node from;
     node to;
-    dist weight;
+    double dist;
 };
 
-const auto inf_dist = std::numeric_limits<dist>::infinity();
+const auto infinity = std::numeric_limits<double>::infinity();
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Code}
 
-\begin{lstlisting}[basicstyle=\footnotesize]
-std::vector<dist> bellman_ford(
-        std::size_t node_count,
-        const std::vector<edge>& edges,
-        node source
+\begin{lstlisting}[basicstyle=\tiny]
+std::vector<dist> bellman_ford(const std::size_t        node_count,
+                               const std::vector<edge>& edges,
+                               node                     source
 ) {
-    std::vector<dist> min_dists(node_count, inf_dist);
+    std::vector<double> min_dists(node_count, infinity);
     min_dists[source] = 0;
     for (std::size_t i = 0; i < node_count + 1; ++i) {
-        auto changes = false;
+        bool changes = false;
         for(const auto& e: edges) {
-            const auto old_dist = min_dists[e.to];
-            const auto new_dist = min_dists[e.from]
-                                  + e.weight;
+            const double old_dist = min_dists[e.to];
+            const double new_dist = min_dists[e.from] + e.dist;
             if (new_dist < old_dist) {
                 min_dists[e.to] = new_dist;
                 changes = true;
             }
         }
-        // ...
-\end{lstlisting}
-
-
-\end{frame}
-
-\begin{frame}[fragile]{Code}
-
-\begin{lstlisting}[basicstyle=\footnotesize]
-        // ...
         if (!changes) { break; }
         if (i == node_count) {
-            throw std::runtime_error{
-                "negative cycle"};
+            throw std::runtime_error{"negative cycle"};
         }
     }
     return min_dists;
 }
 \end{lstlisting}
-
-\end{frame}
-
-\begin{frame}[fragile]{Code}
-
-\begin{lstlisting}[basicstyle=\footnotesize]
-int main() try {
-    const auto edges = std::vector<edge>{
-        {0, 1,  7}, {0, 4,  -1},
-        {1, 0, 10}, {1, 3,  -4},
-        {2, 4,  1},
-        {3, 0,  0}, {3, 2, 2.5},
-        {4, 1, 23}
-    };
-    const auto min_dists = bellman_ford(5, edges, 0);
-    std::copy(min_dists.begin(), min_dists.end(),
-        std::ostream_iterator<dist>{std::cout, "\n"});
-} catch (std::runtime_error& e) {
-    std::cerr << "Error: " << e.what() << '\n';
-}
-\end{lstlisting}
-
 \end{frame}
 
 \begin{frame}{Weitere Eigenschaften}
-
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Negative Kreise lassen sich durch eine weitere Anwendung detektieren
-\item
-  Negative Kreise die nicht auf dem Weg zum Ziel liegen, verfälschen das
-  Ergebnis nicht
-
-  \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-    Die Detektion aller problemlosen Knoten ist mit $V - 1$ weiteren
-    Anwendungen möglich
-  \end{itemize}
+	\item Negative Kreise lassen sich durch eine weitere Anwendung detektieren
+	\item Die Entfernung von nicht über negative Kreise erreichbare Knoten wird immer korrekt ermittelt.
+	\item In jedem negativen Kreis ändert sich im $n + 1$-ten Schritt mindestens eine Entfernung,
+		die Detektion aller Knoten ohne Minimaldistanz ist somit leicht per Breitensuche möglich.
 \end{itemize}
-
 \end{frame}
 
 \begin{frame}{Beurteilung}
-
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
