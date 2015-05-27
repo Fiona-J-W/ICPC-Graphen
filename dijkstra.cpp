@@ -5,21 +5,21 @@
 
 using namespace std;
 
-struct ArrivalEvent {
+struct arrival_event {
   int to;
   int weight;
 };
 
 
-bool operator < (const ArrivalEvent& e1, const ArrivalEvent& e2) {
+bool operator < (const arrival_event& e1, const arrival_event& e2) {
 	   // inversed
     return e1.weight > e2.weight;
 }
 
-vector<int> dijkstra(vector<vector<ArrivalEvent>>& nodes, int startnode) {
+vector<int> dijkstra(vector<vector<arrival_event>>& nodes, int startnode) {
   vector<int> distances (nodes.size(), 2000000000);
 
-  priority_queue<ArrivalEvent> todo;
+  priority_queue<arrival_event> todo;
 
   todo.push({startnode, 0});
 
@@ -31,7 +31,7 @@ vector<int> dijkstra(vector<vector<ArrivalEvent>>& nodes, int startnode) {
       distances[current.to] = current.weight;
 
       for(int i = 0; i < nodes[current.to].size(); i++) {
-        ArrivalEvent next = nodes[current.to][i];
+        arrival_event next = nodes[current.to][i];
         next.weight += current.weight;
 
         todo.push(next);
@@ -42,10 +42,10 @@ vector<int> dijkstra(vector<vector<ArrivalEvent>>& nodes, int startnode) {
   return distances;
 }
 
-int dijkstra_to_target(vector<vector<ArrivalEvent>>& nodes, int startnode, int target) {
+int dijkstra_to_target(vector<vector<arrival_event>>& nodes, int startnode, int target) {
   vector<int> distances (nodes.size(), 2000000000);
 
-  priority_queue<ArrivalEvent> todo;
+  priority_queue<arrival_event> todo;
 
   todo.push({startnode, 0});
 
@@ -60,7 +60,7 @@ int dijkstra_to_target(vector<vector<ArrivalEvent>>& nodes, int startnode, int t
       distances[current.to] = current.weight;
 
       for(int i = 0; i < nodes[current.to].size(); i++) {
-        ArrivalEvent next = nodes[current.to][i];
+        arrival_event next = nodes[current.to][i];
         next.weight += current.weight;
 
         todo.push(next);
@@ -74,7 +74,7 @@ int dijkstra_to_target(vector<vector<ArrivalEvent>>& nodes, int startnode, int t
 
 
 int main() {
-  vector<vector<ArrivalEvent>> nodes = {
+  vector<vector<arrival_event>> nodes = {
     {
       // start
       { 1, 1 },
